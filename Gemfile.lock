@@ -71,6 +71,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
     ffi (1.9.23)
+    flag_shih_tzu (0.3.19)
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fast_blank
+  flag_shih_tzu
   graphiql-rails
   graphql
   guard

@@ -11,6 +11,9 @@ gem 'pg'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
+# Database Extensions
+gem 'flag_shih_tzu' # Bitfields
+
 # Response Generation
 gem 'graphiql-rails'
 gem 'graphql'
