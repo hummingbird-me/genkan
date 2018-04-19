@@ -36,6 +36,10 @@ gem 'hiredis'
 gem 'oj'
 gem 'oj_mimic_json'
 
+group :development do
+  gem 'web-console'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
 
@@ -44,7 +48,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen'
-  gem 'web-console'
 
   # Guard notices filesystem changes and ~~does things~~
   gem 'guard'
