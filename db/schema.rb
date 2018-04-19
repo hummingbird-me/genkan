@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419003343) do
+ActiveRecord::Schema.define(version: 20180419020535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,5 +41,18 @@ ActiveRecord::Schema.define(version: 20180419003343) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "grant_id", null: false
+    t.integer "user_id", null: false
+    t.string "scope", default: [], null: false, array: true
+    t.datetime "expires_at", null: false
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grant_id"], name: "index_tokens_on_grant_id"
+    t.index ["user_id"], name: "index_tokens_on_user_id"
+  end
+
   add_foreign_key "grants", "clients"
+  add_foreign_key "tokens", "grants"
 end
