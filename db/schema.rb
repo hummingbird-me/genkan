@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418214321) do
+ActiveRecord::Schema.define(version: 20180419003343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
   create_table "clients", force: :cascade do |t|
     t.string "key", null: false
@@ -30,4 +31,15 @@ ActiveRecord::Schema.define(version: 20180418214321) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "grants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "revoked_at", null: false
+    t.string "scopes", null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "grants", "clients"
 end

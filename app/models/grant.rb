@@ -1,0 +1,2 @@
+class Grant < ApplicationRecord
+end
