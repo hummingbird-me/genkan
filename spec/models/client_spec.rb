@@ -17,6 +17,10 @@ RSpec.describe Client, type: :model do
       client = Client.new
       expect(client.permitted_scopes).to include('openid')
     end
+    it 'should not include the child-token permission by default' do
+      client = Client.new
+      expect(client.permitted_scopes).not_to include('_children')
+    end
 
     context 'for a client with child-token permissions' do
       let(:client) { Client.new(children: true) }
