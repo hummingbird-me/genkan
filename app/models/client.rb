@@ -4,6 +4,14 @@ class Client < ApplicationRecord
   include FlagShihTzu
   has_flags column: 'permissions', 1 => :children
 
+  validates :key, presence: true
+  validates :secret, presence: true
+  validates :name, presence: true
+  validates :owner_id, presence: true
+
+  before_validation :generate_key, on: :create
+  before_validation :generate_secret, on: :create
+
   # Securely validate the passed-in secret is the one in the database
   #
   # @param secret [String] the secret to test against
@@ -17,5 +25,15 @@ class Client < ApplicationRecord
     scopes = PUBLIC_SCOPES.dup
     scopes << '_children' if children?
     scopes
+  end
+
+  private
+
+  def generate_key
+    self.key ||= SecureRandom.base58(20)
+  end
+
+  def generate_secret
+    self.secret ||= SecureRandom.base58(120)
   end
 end
