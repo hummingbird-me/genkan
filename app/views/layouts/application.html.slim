@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title Genkan
+    = csrf_meta_tags
+    = yield :head
+    = stylesheet_link_tag 'application'
+  body
+    == yield
