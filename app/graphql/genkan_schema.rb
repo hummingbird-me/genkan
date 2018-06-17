@@ -1,4 +1,4 @@
-GenkanSchema = GraphQL::Schema.define do
+class GenkanSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 end
