@@ -15,7 +15,6 @@ gem 'redis-rails'
 gem 'flag_shih_tzu' # Bitfields
 
 # Response Generation
-gem 'graphiql-rails'
 gem 'graphql'
 gem 'slim-rails'
 
@@ -42,6 +41,7 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'graphiql-rails'
 
   # Console Improvements
   gem 'pry-byebug'
