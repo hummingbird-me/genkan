@@ -70,8 +70,10 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-lcov'
 
-  # Test our OAuth2 implementation against an actual client
+  # Test our OAuth2 implementation end-to-end in an actual client
+  gem 'capybara'
   gem 'oauth2'
+  gem 'selenium-webdriver'
 end
 
 group :production, :staging do
