@@ -3,7 +3,7 @@ ruby '2.4.1'
 
 # Web
 gem 'puma'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2.0'
 
 # Databases
 gem 'connection_pool'
