@@ -19,6 +19,7 @@ gem 'graphql'
 gem 'slim-rails'
 
 # Assets
+gem 'sass-rails'
 gem 'webpacker'
 
 # Security
