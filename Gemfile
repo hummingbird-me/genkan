@@ -31,6 +31,7 @@ gem 'lograge'
 gem 'sentry-raven'
 
 # Optimizations
+gem 'bootsnap', require: false
 gem 'fast_blank'
 gem 'hiredis'
 gem 'oj'

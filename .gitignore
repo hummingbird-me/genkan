@@ -8,19 +8,25 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
+.byebug_history
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-/node_modules
-/yarn-error.log
+# Coverage
+/coverage/*
 
-.byebug_history
+# Assets
+/public/assets
 /public/packs
 /public/packs-test
-/node_modules
+
+# Yarn
+/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/node_modules
 
-/coverage/*
+# Ignore master key for decrypting credentials and more.
+/config/master.key
