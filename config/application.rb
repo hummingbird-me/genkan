@@ -28,5 +28,9 @@ module Genkan
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Configure JWT
+    config.jwt_private_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:private_key])
+    config.jwt_public_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:public_key])
   end
 end
