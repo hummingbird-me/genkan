@@ -1,4 +1,4 @@
-class Token < ApplicationRecord
+class AccessToken < ApplicationRecord
   belongs_to :grant, required: true
 
   validates :grant, presence: true
