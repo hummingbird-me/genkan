@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
+
+  scope '/.well-known/', module: 'well_known' do
+    get 'jwks.json', to: 'jwks#show', as: 'jwks'
   end
 
-  post "/graphql", to: "graphql#execute"
   scope module: 'grants' do
     # Authorization Code Grant (three-legged)
     scope constraints: ResponseTypeConstraint.new('code') do
