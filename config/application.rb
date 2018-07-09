@@ -30,5 +30,9 @@ module Genkan
     # Configure JWT
     config.jwt_private_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:private_key])
     config.jwt_public_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:public_key])
+
+    # Configure Redis
+    redis_config = config_for(:redis)
+    config.redis = ConnectionPool.new(redis_config[:pool]) { Redis.new(redis_config) }
   end
 end

@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.0'
 # Databases
 gem 'connection_pool'
 gem 'pg'
-gem 'redis', require: ['redis', 'redis/connection/hiredis']
+gem 'redis'
 gem 'redis-rails'
 
 # Database Extensions

@@ -1,0 +1,14 @@
+development:
+  host: localhost
+  timeout: 10
+  driver: hiredis
+  pool:
+    size: 4
+    timeout: 10
+
+test:
+  host: localhost
+
+production:
+  host: <%= ENV['REDIS_HOST'] %>
+  port: <%= ENV['REDIS_PORT'] %>
