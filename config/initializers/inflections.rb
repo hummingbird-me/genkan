@@ -17,4 +17,6 @@
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'OAuth2'
+  inflect.acronym 'JWKS'
+  inflect.acronym 'JWK'
 end
