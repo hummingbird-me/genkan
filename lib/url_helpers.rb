@@ -1,9 +1,9 @@
 module UrlHelpers
-  module_function
+  class << self
+    include Rails.application.routes.url_helpers
 
-  include Rails.application.routes.url_helpers
-
-  def url_options
-    super.merge(host: Thread.current[:request_host])
+    def url_options
+      super.merge(Thread.current[:url_options] || {})
+    end
   end
 end

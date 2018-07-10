@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include HostOnThread
+  include UrlOptionsOnThread
 
   protect_from_forgery with: :exception
 end
