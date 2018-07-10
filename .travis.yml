@@ -1,14 +1,19 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.1
+  - 2.5.1
 
 install:
   - bundle install --deployment --jobs=3 --retry=3
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - bundle exec rake db:create db:schema:load
 script:
   - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 services:
   - redis-server
@@ -17,3 +22,7 @@ addons:
 notifications:
   slack:
     secure: d9V7SikVD0g4xsYreSL5T4EgCmbrgPWcAoF+OHTW/MDWg50eCkB5TVHVxYDByAbYm8yCEFUFWcwEGiUrfxNfQjMc+ajyu3jgCRGy6neDj2lbf1gI2ua7r3/GWWuJd4FfQL/Uih2BJJmw3Y7Zqz/OWgNBokGEUaQrqNB3etVRyiFJLbX3BoolZQTDUmjMjCGRktvKVP8YulNZIq5G5eAJu8zT8vyTqTNiTTiucr3YrChUqYiVJsHu4mEyAe+aE4TY98BYoxwOAL/3xPaUmTBiFveOA7qqKazTolj5zbW9LXVUMedWM/udtq+ly2tAaF9YhrhkA1P6YsLulC3RdvnbxpyWeNWEcEvri6QEpcCXuqG+lESyxKc/Xf1SNcEnfZsZF9UJ/PipzZvhWA2AC2476pJFmqm84HT6mzLVUgDdgkc9P7KhaTKRWkuVLOvjaigrliQUN7o4akX0FfjvsLMDEma8g7JdQ4rhrqi+EgFeLB0d80DHIcDLOA/HdkMwZ2ct2nT6/wtwS4d1M+oJztGPAg8lCg6Reon1Dy/HoDbNbk1JUMohoV1rw67G+o2qpc21k/Xvpw1dy1dk+uBOIQ8CaEeynFnEQw7dWZPAPd2EpQ4AncrZEWdR1hfN4U1Kab/HFJukSrHEQvloeUhzk+BIJV++RCI1kqNY8VslMzZyRlE=
+
+env:
+  global:
+    secure: INxXuV0Gu5Cx13JYjaAXzYRX+vY2aZ8V2Jl3MnEdxXoU5ZEMYKgt7XmEEGxKxUH1BxygYiisVYI9gO7sN2aPgpo5wEYF3SJzSKMGq9cO6wEerC34FXQXOuj9/beWgGnPurCjVRXIHl130BySZ4b9fKlJZDBuO52xTrDvpbZ9QFHDpSA9o7JSLCTyQpxXY2YbYAOB9kMJvCm9iO0Va+MohHh2RHCE+28dqh0vApJnYvJDerqtsiMYkp/j+G5do4+f95rtm/vELcAZ4ModyemlRN/5EAQkt9UxpIyAYaO8SVCtghsHGyXrR4jFiyWo4E+hgafqLwVWQ0+eAqONdMs+2amvGJjyUG2FMjdyJGpcg7yBksfOHM82re6MjwlW1MH/HUPyN+ANXtU7JZt9te78W1tY7lEEW/Mdy7jAHnpBc2vWU95tZkhKKRPY6BleY/74RqPesjKPCJXxeuYXpRj5ufBP0gBjBI969SJS0oTx6t/vvAMqJUrWpduSvSvlBcF1guAwcl115Chj667hwijZMfBYGL4de7nZY17sR3A7lqYYTta1guoloHpt5GTpjgghvzb5jtOmnkYvC+7O7NrKNQohrWDxuXsz0p0I+yjWBF2tOXvK52AlB/m9fZFD+Sl4/vH/Eh8N7LETauHxbxQ+BXIvQkOvKpp8S6yNt1WRBV0=
