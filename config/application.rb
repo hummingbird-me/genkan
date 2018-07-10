@@ -27,9 +27,23 @@ module Genkan
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # Set up default logger
+    config.logger = Logger.new(STDERR)
+
     # Configure JWT
-    config.jwt_private_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:private_key])
-    config.jwt_public_key = OpenSSL::PKey.read(Rails.application.credentials.jwt[:public_key])
+    if Rails.application.credentials.present?
+      config.jwt_algorithm = credentials.jwt[:algorithm]
+      config.jwt_private_key = OpenSSL::PKey.read(credentials.jwt[:private_key])
+      config.jwt_public_key = OpenSSL::PKey.read(credentials.jwt[:public_key])
+    elsif Rails.env.production?
+      config.logger.error 'Production mode requires configuration of Rails credentials'
+    else
+      config.logger.warn 'No credentials found; generating random key.'
+      # Just generate a new key at startup when we don't have credentials
+      config.jwt_algorithm = 'RS256'
+      config.jwt_private_key = OpenSSL::PKey::RSA.generate(2048)
+      config.jwt_public_key = config.jwt_private_key.public_key
+    end
 
     # Configure Redis
     redis_config = config_for(:redis)
