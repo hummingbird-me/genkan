@@ -33,6 +33,6 @@ module Genkan
 
     # Configure Redis
     redis_config = config_for(:redis)
-    config.redis = ConnectionPool.new(redis_config[:pool]) { Redis.new(redis_config) }
+    config.redis = ConnectionPool.new(redis_config[:pool] || {}) { Redis.new(redis_config) }
   end
 end
