@@ -49,11 +49,9 @@ RSpec.describe Grant, type: :model do
       end
       it 'should revoke any tokens issued under this grant' do
         token = create(:token, grant: subject)
-        Timecop.freeze do
-          expect(token.revoked_at).to be_nil
-          subject.revoke!
-          expect(token.reload.revoked_at).to eq(Time.now)
-        end
+        expect(token.revoked_at).to be_nil
+        subject.revoke!
+        expect(token.reload.revoked?).to be_truthy
       end
     end
 
