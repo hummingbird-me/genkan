@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     scope constraints: GrantTypeConstraint.new('assertion', /\Aurn:ietf:params:oauth:/) do
       post '/token', to: 'assertion#grant'
     end
+
+    # No matching constraints
+    get '/authorize', to: 'error#unsupported_response_type'
   end
 
   root to: 'root#root'
