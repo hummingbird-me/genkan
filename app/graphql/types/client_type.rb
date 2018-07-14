@@ -4,9 +4,9 @@ module Types
 
     field :id, ID, null: false
     field :name, String, null: false
-    field :homepage, String
-    field :description, String
-    field :logo_id, String
-    field :owner_id, String
+    field :homepage, String, null: true
+    field :description, String, null: true
+    field :logo_id, String, null: true
+    field :owner_id, String, null: true
   end
 end
