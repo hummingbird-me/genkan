@@ -1,5 +1,5 @@
 Types::MutationType = GraphQL::ObjectType.define do
-  name "Mutation"
+  graphql_name "Mutation"
 
   # TODO: Remove me
   field :testField, types.String do

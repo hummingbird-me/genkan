@@ -1,6 +1,6 @@
 module Types
   class ClientType < BaseObject
-    name 'Client'
+    graphql_name 'Client'
 
     field :id, ID, null: false
     field :name, String, null: false

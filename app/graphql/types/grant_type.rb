@@ -1,6 +1,6 @@
 module Types
   class GrantType < BaseObject
-    name 'Grant'
+    graphql_name 'Grant'
 
     field :id, ID, null: false
     field :user_id, String, null: false
