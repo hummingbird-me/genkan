@@ -7,3 +7,12 @@ WebMock.disable_net_connect!(allow: [
   'lorempixel.com',
   'localhost'
 ])
+
+RSpec.configure do |config|
+  config.before(:each, type: :feature) do
+    WebMock.disable!
+  end
+  config.after(:each, type: :feature) do
+    WebMock.enable!
+  end
+end

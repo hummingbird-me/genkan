@@ -39,4 +39,6 @@ Rails.application.routes.draw do
       post '/token', to: 'assertion#grant'
     end
   end
+
+  root to: 'root#root'
 end

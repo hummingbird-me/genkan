@@ -22,6 +22,10 @@ RSpec.configure do |config|
   # Figure out :type attributes from directory names
   config.infer_spec_type_from_file_location!
 
+  # Set up URL Options
+  config.before(:suite) { Thread.current[:url_options] = { host: 'example.com' } }
+  config.after(:suite) { Thread.current[:url_options] = nil }
+
   # Load the entire application so we get zero-coverage files if we're running
   # the entire suite
   Rails.application.eager_load! unless config.files_to_run.one?
