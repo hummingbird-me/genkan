@@ -11,6 +11,10 @@ class OAuth2Error < StandardError
   class InvalidScope < OAuth2Error; end
   class ServerError < OAuth2Error; end
   class TemporarilyUnavailable < OAuth2Error; end
+  class InvalidGrant < OAuth2Error; end
+  # Resource Owner Password Grant errors
+  class UserNotFound < InvalidGrant; end
+  class InvalidPassword < InvalidGrant; end
 
   def message
     I18n.t(:title, scope: i18n_scope)
