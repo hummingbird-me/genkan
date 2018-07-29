@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_020213) do
+ActiveRecord::Schema.define(version: 2018_07_29_185239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,6 +49,34 @@ ActiveRecord::Schema.define(version: 2018_07_10_020213) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["grant_id"], name: "index_tokens_on_grant_id"
+  end
+
+  create_table "user_assertion_ids", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "assertion", null: false
+    t.integer "source", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source", "assertion"], name: "index_user_assertion_ids_on_source_and_assertion", unique: true
+  end
+
+  create_table "user_names", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.integer "status", default: 1, null: false
+    t.integer "kind", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_user_names_on_name", unique: true
+  end
+
+  create_table "user_passwords", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "password", null: false
+    t.integer "source", default: 0, null: false
+    t.integer "status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "grants", "clients"
