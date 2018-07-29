@@ -3,8 +3,8 @@
 # tokens granted under it.
 class Grant < ApplicationRecord
   scope :revoked, -> { where('revoked_at < ?', Time.now) }
-  scope :expired, -> { where('expired_at < ?', Time.now) }
-  scope :valid, -> { where.not('expired_at < ? AND revoked_at < ?', [Time.now, Time.now]) }
+  scope :expired, -> { where('expires_at < ?', Time.now) }
+  scope :valid, -> { where.not('expires_at < ? AND revoked_at < ?', Time.now, Time.now) }
 
   belongs_to :client, required: true
   has_many :tokens, dependent: :destroy
