@@ -20,9 +20,20 @@ class OAuth2Error < StandardError
     I18n.t(:description, scope: i18n_scope)
   end
 
+  def as_json(*opts)
+    {
+      error: error_code,
+      error_description: description
+    }.as_json(*opts)
+  end
+
   private
 
+  def error_code
+    @error_code ||= self.class.name.demodulize.underscore
+  end
+
   def i18n_scope
-    "oauth2.errors.#{self.class.name.demodulize.underscore}"
+    "oauth2.errors.#{error_code}"
   end
 end
