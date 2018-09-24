@@ -86,7 +86,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
     ffi (1.9.25)
-    flag_shih_tzu (0.3.21)
+    flag_shih_tzu (0.3.22)
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
