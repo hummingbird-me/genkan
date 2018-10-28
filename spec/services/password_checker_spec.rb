@@ -47,7 +47,7 @@ RSpec.describe PasswordChecker do
 
     describe '#password_valid?' do
       it 'should raise OAuth2Error::UserNotFound' do
-        checker = PasswordChecker.new(name.name)
+        checker = PasswordChecker.new('Fake')
         expect {
           checker.password_valid?('test')
         }.to raise_error(OAuth2Error::UserNotFound)
@@ -56,7 +56,7 @@ RSpec.describe PasswordChecker do
 
     describe '#validate_password!' do
       it 'should raise OAuth2Error::UserNotFound' do
-        checker = PasswordChecker.new(name.name)
+        checker = PasswordChecker.new('Fake')
         expect {
           checker.validate_password!('test')
         }.to raise_error(OAuth2Error::UserNotFound)

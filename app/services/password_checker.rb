@@ -5,6 +5,7 @@ class PasswordChecker
 
   def validate_password!(password)
     return true if password_valid?(password)
+
     raise OAuth2Error::InvalidPassword
   end
 
@@ -17,7 +18,7 @@ class PasswordChecker
   def username
     UserName.live.find_by!(name: @name)
   rescue ActiveRecord::RecordNotFound
-    raise OAuth2Error::UserNotFound, name
+    raise OAuth2Error::UserNotFound, @name
   end
 
   def passwords
