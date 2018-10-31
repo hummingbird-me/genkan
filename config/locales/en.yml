@@ -28,3 +28,9 @@ en:
       temporarily_unavailable:
         title: Temporarily Unavailable
         description: The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server. Equivalent to HTTP 503 Temporarily Unavailable
+      user_not_found:
+        title: User Not Found
+        description: A user with that information was not found in our database.
+      invalid_password:
+        title: Invalid Password
+        description: The password did not match our records

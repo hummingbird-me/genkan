@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_185239) do
+ActiveRecord::Schema.define(version: 2018_10_31_031541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -36,19 +36,21 @@ ActiveRecord::Schema.define(version: 2018_07_29_185239) do
     t.integer "client_id", null: false
     t.datetime "expires_at", null: false
     t.datetime "revoked_at"
-    t.string "scopes", null: false, array: true
+    t.string "scopes", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "grant_id", null: false
     t.string "scopes", default: [], null: false, array: true
     t.datetime "expires_at", null: false
     t.datetime "revoked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["grant_id"], name: "index_tokens_on_grant_id"
+    t.bigint "user_id", null: false
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_tokens_on_client_id"
+    t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
   create_table "user_assertion_ids", force: :cascade do |t|
@@ -80,5 +82,4 @@ ActiveRecord::Schema.define(version: 2018_07_29_185239) do
   end
 
   add_foreign_key "grants", "clients"
-  add_foreign_key "tokens", "grants"
 end

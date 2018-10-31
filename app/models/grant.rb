@@ -1,33 +1,20 @@
-# Represents a grant of permissions to a client for a given user and set of scopes. The grant can be
-# manually revoked and has an expiration date.  When the grant is no longer valid, neither are the
-# tokens granted under it.
+# A Grant represents the period in which a client can log a user back in with an immediate redirect,
+# not requiring explicit user interaction.  As such, a Grant only applies to clients using the
+# Implicit Grant or Authorization Code Grant.
+#
+# The Grant is limited to a set of scopes, and if you request more scopes in a reauthorization
+# request, the flow will still require user interaction.
+#
+# Grants will only be issued if a client has been configured with an HTTPS Redirect URI, otherwise
+# it creates a significant security hole for any client using a non-confidential setup.
 class Grant < ApplicationRecord
-  scope :revoked, -> { where('revoked_at < ?', Time.now) }
-  scope :expired, -> { where('expires_at < ?', Time.now) }
-  scope :valid, -> { where.not('expires_at < ? AND revoked_at < ?', Time.now, Time.now) }
+  include WithExpiration
+  include WithRevocation
+
+  scope :acceptable, -> { where.not('expires_at < ? AND revoked_at < ?', Time.now, Time.now) }
 
   belongs_to :client, required: true
-  has_many :tokens, dependent: :destroy
 
   validates :client, presence: true
   validates :user_id, presence: true
-  validates :expires_at, presence: true
-
-  # @return [Boolean] whether this grant has expired yet
-  def expired?
-    expires_at&.past?
-  end
-
-  # @return [Boolean] whether this grant has been revoked
-  def revoked?
-    revoked_at&.past?
-  end
-
-  # Revoke this grant immediately.  All Tokens issued under this grant are also revoked.
-  # @return [void]
-  def revoke!
-    return if revoked?
-    update(revoked_at: Time.now)
-    tokens.update_all(revoked_at: Time.now, updated_at: Time.now)
-  end
 end
