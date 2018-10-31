@@ -1,6 +1,5 @@
 RSpec.describe Grant, type: :model do
   it { should belong_to(:client) }
-  it { should have_many(:tokens).dependent(:destroy) }
   it { should validate_presence_of(:client) }
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:expires_at) }
@@ -46,12 +45,6 @@ RSpec.describe Grant, type: :model do
           subject.revoke!
           expect(subject.revoked_at).to eq(Time.now)
         end
-      end
-      it 'should revoke any tokens issued under this grant' do
-        token = create(:token, grant: subject)
-        expect(token.revoked_at).to be_nil
-        subject.revoke!
-        expect(token.reload.revoked?).to be_truthy
       end
     end
 

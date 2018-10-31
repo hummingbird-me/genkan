@@ -15,7 +15,7 @@ class Token < ApplicationRecord
     TokenParser.dump(
       jti: id,
       scopes: scopes,
-      sub: grant.user_id,
+      sub: user_id,
       iat: created_at.to_i,
       exp: expires_at.to_i
     )
