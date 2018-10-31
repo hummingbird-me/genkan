@@ -279,7 +279,6 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    simplecov-lcov (0.7.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -364,7 +363,6 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   simplecov
-  simplecov-lcov
   slim-rails
   spring
   spring-watcher-listen
@@ -378,4 +376,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.17.0

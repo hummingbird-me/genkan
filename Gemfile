@@ -69,7 +69,6 @@ group :test do
 
   # Coverage Reporting
   gem 'simplecov'
-  gem 'simplecov-lcov'
 
   # Test our OAuth2 implementation end-to-end in an actual client
   gem 'capybara'
