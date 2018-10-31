@@ -10,6 +10,7 @@ SimpleCov.start do
   add_group 'Models', 'app/models'
   add_group 'Mailers', 'app/mailers'
   add_group 'Services', 'app/services'
+  add_group 'Constraints', 'app/constraints'
   add_group 'Libs', 'lib/'
 
   track_files '{app,lib}/**/*.rb'
