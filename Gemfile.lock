@@ -115,7 +115,7 @@ GEM
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
-    jwt (1.5.6)
+    jwt (2.1.0)
     librato-metrics (2.1.2)
       aggregate (~> 0.2.2)
       faraday
