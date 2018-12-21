@@ -3,7 +3,7 @@ ruby '2.5.1'
 
 # Web
 gem 'puma'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.1'
 
 # Databases
 gem 'connection_pool'
@@ -20,7 +20,6 @@ gem 'slim-rails'
 
 # Assets
 gem 'sass-rails'
-gem 'webpacker'
 
 # Security
 gem 'bcrypt'
