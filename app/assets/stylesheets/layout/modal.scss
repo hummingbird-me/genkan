@@ -1,0 +1,21 @@
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  flex-direction: column;
+}
+.modal {
+  background-color: $offWhite;
+  width: 400px;
+  min-height: 500px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 1px 1px $extraDarkPurple;
+}
+.modal-header {
+  width: 400px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,72 @@
+$header-background-color: #352f3e;
+
+$background-color: #2f2c38;
+$secondary-background-color: #292631;
+$foreground-background-color: #3b3946;
+
+$primary-cta-color: #16A085;
+$secondary-cta-color: #6d6d6d;
+
+$body-text-color: #918F99;
+$body-secondary-text-color: darken($body-text-color, 5);
+
+$body-link-color: #ff8282;
+$input-text-color: #fff;
+
+$divider-color: darken($background-color,4);
+
+$rating-star-color: #ffb33b;
+
+$white: #FFF;
+$red: #ff4136;
+
+/* reds/pinks */
+$red: #DA5E51;
+$activeRed: #F87270;
+$lightPink: #B7A7B6;
+$tabRed: rgb(252, 117, 92);
+
+/* blues */
+$blue: #43ABF1;
+$fbBlue: #507CC0;
+$fbBlueDark: #3B5998; // taken from invision app designs
+$linkBlue: #083d8d; // sidebar seemore text
+
+/* purples */
+$extraDarkPurple: #302530;
+$darkPurple: #402F3F;
+$lightPurple: #624E5F;
+$listBackPurple: #443443;
+$tabBarPuple: #453342;
+
+/* greens */
+$lightGreen: #84E06F;
+
+/* whites/greys */
+$white: #FFFFFF;
+$offWhite: #FAFAFA;
+$transparentWhite: rgba(255, 255, 255, 0.6); // signup tabs
+$imageGrey: #D8D8D8;
+$lightGrey: #CCCCCC;
+$lightestGrey: #EEEEEE;
+$darkGrey: #696969;
+$grey: #808080; // html grey aka 'grey'
+
+/* yellows */
+$yellow: #F0AD4E;
+
+/* orange */
+$orange: #D95E40;
+
+/* blacks */
+$black: #000000;
+$offBlack: #2B212B;
+$softBlack: #333;
+
+/* misc */
+$transparent: transparent;
+$buttonDisabledColor: #878787;
+$imageBackColor: rgb(153, 130, 153);
+$listSeparatorColor: #261C25;
+$categoryTextColor: #C7C2C7;
+$tabbarSelectedTextColor: rgb(252, 117, 92);
