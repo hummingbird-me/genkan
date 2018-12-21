@@ -6,17 +6,12 @@ module LoginHelpers
   # @param user_id [String] the User ID to log in as
   # @return [String] the cookie string for the token
   def cookie_for(user_id)
-    # Create a grant for the Kitsu app
-    grant = Grant.create!(
+    # Issue a token
+    token = Token.create!(
       client: Client.first,
       user_id: user_id,
       expires_at: 6.months.from_now,
       scopes: %i[_all genkan]
-    )
-    # Issue a token for that grant
-    token = Token.create!(
-      grant: grant,
-      expires_at: 6.months.from_now
     )
     # Generate the JWT
     token.to_jwt
