@@ -23,6 +23,7 @@ gem 'sass-rails'
 
 # Security
 gem 'bcrypt'
+gem 'json-jwt'
 gem 'jwt'
 
 # Miscellanea

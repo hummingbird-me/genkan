@@ -3,9 +3,9 @@ require 'jwk'
 module WellKnown
   class JWKSController < ApplicationController
     def show
-      render json: {
-        keys: [JWK.new(Genkan::Application.config.jwt_public_key)]
-      }
+      key = JSON::JWK.new(Genkan::Application.config.jwt_public_key)
+      set = JSON::JWK::Set.new(key)
+      render json: set
     end
   end
 end
