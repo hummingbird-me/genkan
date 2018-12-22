@@ -26,7 +26,7 @@ class Client < ApplicationRecord
   #
   # @param uri [String] the URI to check
   # @return [Boolean] whether the URI is whitelisted
-  def valid_redirect_uri?(uri)
+  def valid_redirect_uri?(_uri)
     true
   end
 

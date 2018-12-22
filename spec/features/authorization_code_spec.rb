@@ -8,7 +8,7 @@ RSpec.describe 'OAuth2 Authorization Code Flow', type: :feature do
   end
   let(:oauth) do
     OAuth2::Client.new(client.key, client.secret,
-      site: "http://localhost",
+      site: 'http://localhost',
       redirect_uri: client.redirect_uri,
       authorize_url: '/authorize',
       token_url: '/token',
