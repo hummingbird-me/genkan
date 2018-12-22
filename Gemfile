@@ -3,7 +3,7 @@ ruby '2.5.1'
 
 # Web
 gem 'puma'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.2'
 
 # Databases
 gem 'connection_pool'
@@ -39,6 +39,8 @@ gem 'oj'
 gem 'oj_mimic_json'
 
 group :development do
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'web-console'
 end
 
@@ -47,8 +49,6 @@ group :development, :test do
   gem 'graphiql-rails'
 
   # Console Improvements
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen'
 
