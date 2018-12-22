@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < BaseObject
     field :test_field, String, null: false,

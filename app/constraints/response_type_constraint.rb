@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResponseTypeConstraint
   def initialize(*response_types)
     @response_types = response_types

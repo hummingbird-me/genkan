@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Manages records which are revocable with the `revoked_at` column.
 module WithRevocation
   extend ActiveSupport::Concern

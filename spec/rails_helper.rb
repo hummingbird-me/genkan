@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative './support/coverage' # Load coverage stuff early
 require File.expand_path('../../config/environment', __FILE__)

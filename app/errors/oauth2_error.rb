@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OAuth2Error < StandardError
   # Fatal Errors (no redirect)
   class FatalError < OAuth2Error; end

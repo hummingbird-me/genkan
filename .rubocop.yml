@@ -36,9 +36,9 @@ Naming/FileName:
 Style/FormatString:
   Enabled: true
   EnforcedStyle: format
-# TODO: enable this and transition to immutable strings
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
+  AutoCorrect: true
 Style/GlobalVars:
   Enabled: false
 Style/GuardClause:

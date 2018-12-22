@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'OAuth2 Resource Owner Password Flow', js: true, type: :feature do

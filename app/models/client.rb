@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Client < ApplicationRecord
   PUBLIC_SCOPES = %w[profile.read openid].freeze
 

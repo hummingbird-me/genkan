@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Parses and verifies the list of scopes in a request's params[:scope] field
 module ScopeParameter
   extend ActiveSupport::Concern

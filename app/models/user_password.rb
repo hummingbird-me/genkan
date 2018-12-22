@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPassword < ApplicationRecord
   enum status: %i[dead live]
   enum source: %i[kitsu aozora]

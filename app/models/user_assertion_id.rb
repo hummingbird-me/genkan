@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserAssertionID < ApplicationRecord
   enum source: %i[facebook twitter ao_facebook]
 

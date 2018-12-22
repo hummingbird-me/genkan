@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The PasswordChecker class encapsulates the task of verifying an entered password against our
 # stored passwords for a given User ID.  A single User can have multiple passwords, though most will
 # only have one live one.  There are some exceptions, however: if the user merges their Aozora

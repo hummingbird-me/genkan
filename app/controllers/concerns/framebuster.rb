@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Prevent clickjacking via headers.  This covers all our supported browsers: we do not need a
 # JavaScript framebuster.
 #

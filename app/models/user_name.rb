@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserName < ApplicationRecord
   enum status: %i[dead live]
   enum kind: %i[email username]

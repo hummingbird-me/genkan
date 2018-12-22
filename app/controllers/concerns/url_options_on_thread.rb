@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency 'with_thread_variable'
 
 # Adds the url options to the thread during the request lifecycle

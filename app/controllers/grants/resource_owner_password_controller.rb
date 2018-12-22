@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Grants
   class ResourceOwnerPasswordController < ApplicationController
     ACCESS_TOKEN_LIFETIME = 1.month

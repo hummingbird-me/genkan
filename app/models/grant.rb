@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A Grant represents the period in which a client can log a user back in with an immediate redirect,
 # not requiring explicit user interaction.  As such, a Grant only applies to clients using the
 # Implicit Grant or Authorization Code Grant.

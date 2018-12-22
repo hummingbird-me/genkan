@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GrantTypeConstraint
   def initialize(*grant_types)
     @grant_types = grant_types

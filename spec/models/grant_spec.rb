@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Grant, type: :model do
   it { should belong_to(:client) }
   it { should validate_presence_of(:client) }

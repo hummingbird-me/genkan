@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class ScopeEnum < BaseEnum
     value 'FOLLOWS.WRITE', 'Follow other users'

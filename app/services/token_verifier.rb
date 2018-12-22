@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TokenVerifier
   # @param token [String] the JWT token to verify
   def initialize(token)

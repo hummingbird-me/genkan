@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SecureFaker
   def image(*args)
     super(*args).sub('http://', 'https://')

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Manages records which expire using the `expires_at` column.
 module WithExpiration
   extend ActiveSupport::Concern

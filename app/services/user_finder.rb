@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The UserFinder service looks up a user by a given login name.  Login names are the various keys
 # which a user can use to log in.  When a user registers, the first login name they're assigned is
 # their email address.  However, a user can have as many login names as is necessary for other

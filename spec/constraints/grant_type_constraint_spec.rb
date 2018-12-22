@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe GrantTypeConstraint do
   let(:request) do
     ActionDispatch::TestRequest.create('action_dispatch.request.request_parameters' => {

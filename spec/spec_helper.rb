@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   # Expectations/assertions
   config.expect_with :rspec do |expectations|

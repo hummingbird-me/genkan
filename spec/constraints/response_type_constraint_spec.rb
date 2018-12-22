@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ResponseTypeConstraint do
   let(:request) do
     ActionDispatch::TestRequest.create('action_dispatch.request.query_parameters' => {

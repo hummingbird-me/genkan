@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class GrantType < BaseObject
     graphql_name 'Grant'

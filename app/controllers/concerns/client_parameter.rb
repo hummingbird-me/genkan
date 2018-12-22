@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ClientParameter
   def client
     @client ||= Client.find_by!(key: params[:client_id])
