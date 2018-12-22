@@ -328,6 +328,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bcrypt
   bootsnap
   capybara

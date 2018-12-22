@@ -15,6 +15,7 @@ gem 'redis-rails'
 gem 'flag_shih_tzu' # Bitfields
 
 # Response Generation
+gem 'addressable'
 gem 'graphql'
 gem 'slim-rails'
 
