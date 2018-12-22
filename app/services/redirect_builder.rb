@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Given a URI and a Kind (fragment or query), makes adding params easy.
 class RedirectBuilder
   # @param uri [String] the redirect URI to work with
