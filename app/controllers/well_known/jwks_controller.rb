@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'jwk'
-
 module WellKnown
   class JWKSController < ApplicationController
     def show
