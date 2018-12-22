@@ -31,7 +31,7 @@ module Genkan
     config.logger = Logger.new(STDERR)
 
     # Configure JWT
-    if Rails.application.credentials.present?
+    if credentials.jwt.present?
       config.jwt_algorithm = credentials.jwt[:algorithm]
       config.jwt_private_key = OpenSSL::PKey.read(credentials.jwt[:private_key])
       config.jwt_public_key = OpenSSL::PKey.read(credentials.jwt[:public_key])
