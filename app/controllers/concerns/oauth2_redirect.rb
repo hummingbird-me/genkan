@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OAuth2Redirect
   extend ActiveSupport::Concern
 

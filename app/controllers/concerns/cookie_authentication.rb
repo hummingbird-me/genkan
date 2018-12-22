@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CookieAuthentication
   extend ActiveSupport::Concern
 
