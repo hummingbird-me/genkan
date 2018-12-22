@@ -9,6 +9,6 @@ module OAuth2FatalErrorHandling
   end
 
   included do
-    rescue_from OAuth2Error, with: :render_oauth2_fatal_error
+    rescue_from OAuth2Error::FatalError, with: :render_oauth2_fatal_error
   end
 end
