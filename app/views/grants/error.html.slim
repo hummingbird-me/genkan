@@ -1,9 +1,12 @@
 -if @error.is_a?(OAuth2Error::InvalidScope)
   h1= @error.message
   p= @error.description
-  ul
-    -@error.scopes.each do |scope|
-      li= scope
+  -if @error.scopes.present?
+    ul
+      -@error.scopes.each do |scope|
+        li= scope
+  -else
+    No scopes passed
 -else
   h1= @error.message
   = @error.description
