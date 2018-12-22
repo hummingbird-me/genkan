@@ -4,6 +4,6 @@ html
     title Genkan
     = csrf_meta_tags
     = yield :head
-    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'application', integrity: true
   body
     == yield
