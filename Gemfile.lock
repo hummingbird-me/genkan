@@ -47,7 +47,7 @@ GEM
     aes_key_wrap (1.0.1)
     aggregate (0.2.2)
     arel (9.0.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     bindata (2.4.4)
     bindex (0.5.0)
     bootsnap (1.4.4)
