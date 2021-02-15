@@ -3,38 +3,39 @@
 module LoginHelpers
   extend ActiveSupport::Concern
 
-  # Generate a cookie to authenticate as a specific user ID
-  #
-  # @param user_id [String] the User ID to log in as
-  # @return [String] the cookie string for the token
-  def cookie_for(user_id)
-    # Issue a token
-    token = Token.create!(
-      client: Client.first,
-      user_id: user_id,
-      expires_at: 6.months.from_now,
-      scopes: %i[_all genkan]
-    )
-    # Generate the JWT
-    token.to_jwt
+  module Hook
+    def token
+      TokenVerifier.new(Thread.current[:token] || cookies[:token]).token
+    end
   end
 
-  # Login to Capybara
+  # Set the token for this test
+  #
+  # @param token [String] the token to use
+  # @return [void]
+  def token=(token)
+    Thread.current[:token] = token
+  end
+
+  # Login as a User
   #
   # @param user_id [String] the User ID to log in as
   # @return [void]
-  def login_to_capybara_as(user_id)
-    # Setting cookies won't work until we visit a page
-    visit('/')
-    # Generate the cookie and feed it into Headless Chrome via Selenium WebDriver via Capybara
-    cookie = cookie_for(user_id)
-    page.driver.browser.manage.add_cookie(
-      name: 'token',
-      value: cookie
-    )
+  def login_as(user_id)
+    self.token = Token.create!(
+      user_id: user_id,
+      client: Client.first,
+      expires_at: 5.months.from_now
+    ).to_jwt
   end
 end
 
+CookieAuthentication.prepend(LoginHelpers::Hook)
+
 RSpec.configure do |c|
   c.include LoginHelpers
+
+  c.after(:example) do
+    Thread.current[:token] = nil
+  end
 end

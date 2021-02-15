@@ -25,8 +25,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   # Set up URL Options
-  config.before(:suite) { Thread.current[:url_options] = { host: 'example.com' } }
-  config.after(:suite) { Thread.current[:url_options] = nil }
+  config.before(:example) { Thread.current[:url_options] = { host: 'example.com' } }
 
   # Load the entire application so we get zero-coverage files if we're running
   # the entire suite

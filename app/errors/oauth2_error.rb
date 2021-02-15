@@ -10,7 +10,13 @@ class OAuth2Error < StandardError
   class UnauthorizedClient < OAuth2Error; end
   class AccessDenied < OAuth2Error; end
   class UnsupportedResponseType < OAuth2Error; end
-  class InvalidScope < OAuth2Error; end
+  class InvalidScope < OAuth2Error
+    attr_reader :scopes
+
+    def initialize(scopes = nil)
+      @scopes = scopes
+    end
+  end
   class ServerError < OAuth2Error; end
   class TemporarilyUnavailable < OAuth2Error; end
   class InvalidGrant < OAuth2Error; end

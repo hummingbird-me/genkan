@@ -22,6 +22,14 @@ class Client < ApplicationRecord
     ActiveSupport::SecurityUtils.secure_compare(self.secret, secret)
   end
 
+  # Validate if this client has whitelisted a given URI for redirecting back to
+  #
+  # @param uri [String] the URI to check
+  # @return [Boolean] whether the URI is whitelisted
+  def valid_redirect_uri?(_uri)
+    true
+  end
+
   # @return [Array<String>] the scopes which this client has access to
   def permitted_scopes
     scopes = PUBLIC_SCOPES.dup

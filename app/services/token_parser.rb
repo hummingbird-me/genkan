@@ -5,7 +5,7 @@ require_dependency 'url_helpers'
 module TokenParser
   class << self
     def parse(str)
-      JWT.decode(str, public_key, algorithm: algorithm)
+      JWT.decode(str, public_key, true, algorithm: algorithm)
     end
 
     def dump(payload)

@@ -1,0 +1,25 @@
+.modal-container#page
+  div
+    header.modal__header
+      = image_tag "layout/kitsu-logo.svg", height: '50px'
+      = @authorization.client.logo_id
+      - if @authorization.client.logo_id
+        = image_tag @authorization.client.logo_id
+      - else
+        = image_tag "placeholders/client-logo.svg", height: '50px'
+    .modal
+      .modal__contents
+        .scopes-list
+          h1.scopes-list__header
+            => @authorization.client.name
+            | would like to:
+          ul.scopes-list__list
+            - @authorization.scopes.each do |scope|
+              li= I18n.t scope, scope: 'scopes'
+      .modal__actions
+        = form_tag(authorize_path, method: :post) do
+          = button_tag class: 'modal__button.button--primary'
+            | Allow
+        = form_tag(authorize_path, method: :delete) do
+          = button_tag class:'modal__button.button--secondary'
+            | Deny
