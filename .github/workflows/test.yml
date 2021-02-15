@@ -1,0 +1,75 @@
+name: Genkan Tests
+
+on:
+  push:
+  pull_request:
+    # Branches from forks have the form 'user:branch-name' so we only run
+    # this job on pull_request events for branches that look like fork
+    # branches. Without this we would end up running this job twice for non
+    # forked PRs, once for the push and then once for opening the PR.
+    branches:
+    - '**:**'
+
+env:
+  LOG_LEVEL: warn
+
+jobs:
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12-alpine
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: genkan_test
+        ports:
+          - 5432/tcp
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379/tcp
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v1
+
+    - name: Restore Cached Dependencies
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        gem install bundler
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+
+    - name: Set up Test Environment
+      if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/genkan_test
+        REDIS_URL: redis://localhost:${{ job.services.redis.ports[6379] }}/1
+      run: |
+        bundle exec rake db:create db:schema:load
+
+    - name: Run Tests
+      if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/kitsu_test
+        REDIS_URL: redis://localhost:${{ job.services.redis.ports[6379] }}/1
+        ELASTICSEARCH_URL: localhost:${{ job.services.elasticsearch.ports[9200] }}
+      run: |
+        bundle exec rspec
