@@ -6,7 +6,6 @@ RSpec.describe UserPassword do
   it { should define_enum_for(:status) }
   it { should define_enum_for(:source) }
   it { should validate_presence_of(:user_id) }
-  it { should validate_presence_of(:password) }
 
   describe 'password field' do
     it 'should hash the password when setting' do
