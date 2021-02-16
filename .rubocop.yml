@@ -1,14 +1,15 @@
+require: rubocop-rails
 AllCops:
   Exclude:
     - node_modules/**/*
     - db/**/*
     - bin/**/*
     - Guardfile
-  DisplayCopNames: false
+  DisplayCopNames: true
   DisplayStyleGuide: true
   StyleGuideCopsOnly: false
-  TargetRubyVersion: 2.3
-Layout/AlignParameters:
+  TargetRubyVersion: 2.7
+Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
@@ -22,14 +23,16 @@ Style/CollectionMethods:
 Style/CommentAnnotation:
   Enabled: true
   Keywords:
-  - TODO
-  - FIXME
-  - OPTIMIZE
-  - HACK
-  - REVIEW
-  - DEPRECATED
+    - TODO
+    - FIXME
+    - OPTIMIZE
+    - HACK
+    - REVIEW
+    - DEPRECATED
 Layout/DotPosition:
   EnforcedStyle: leading
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 Naming/FileName:
   Enabled: true
   Exclude: ['**/jsonapi-resources.rb']
@@ -46,9 +49,9 @@ Style/GuardClause:
   MinBodyLength: 3
 Style/IfUnlessModifier:
   Enabled: true
-Layout/IndentArray:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
-Layout/IndentHash:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 Style/LambdaCall:
   Enabled: true
@@ -73,11 +76,11 @@ Style/PercentLiteralDelimiters:
 Naming/PredicateName:
   Enabled: true
   NamePrefix:
-  - is_
-  - has_
-  - have_
-  NamePrefixBlacklist:
-  - is_
+    - is_
+    - has_
+    - have_
+  ForbiddenPrefixes:
+    - is_
 Style/RaiseArgs:
   Enabled: true
   EnforcedStyle: exploded
@@ -103,7 +106,7 @@ Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyleForEmptyBraces: no_space
 Style/SymbolProc:
   Enabled: true
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
   EnforcedStyle: final_newline
 Style/TrailingCommaInArguments:
@@ -143,7 +146,7 @@ Metrics/ModuleLength:
 Metrics/CyclomaticComplexity:
   Enabled: true
   Max: 10
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: true
   Max: 100
   AllowURI: true
@@ -193,7 +196,7 @@ Style/EmptyLiteral:
   Enabled: true
 Style/EvenOdd:
   Enabled: true
-Style/FlipFlop:
+Lint/FlipFlop:
   Enabled: true
 Style/IfWithSemicolon:
   Enabled: true
@@ -230,7 +233,13 @@ Style/SelfAssignment:
 Style/ClassAndModuleChildren:
   Enabled: true
   Exclude:
-  - app/graphql/**/*
+    - app/graphql/**/*
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
 Layout/SpaceBeforeFirstArg:
   Enabled: true
 Layout/SpaceAfterColon:
@@ -253,8 +262,6 @@ Layout/SpaceBeforeSemicolon:
   Enabled: true
 Layout/SpaceAroundOperators:
   Enabled: true
-Layout/SpaceAroundKeyword:
-  Enabled: true
 Layout/SpaceInsideParens:
   Enabled: true
 Layout/SpaceInsideRangeLiteral:
@@ -275,7 +282,7 @@ Lint/DeprecatedClassMethods:
   Enabled: true
 Security/Eval:
   Enabled: true
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: true
 Lint/LiteralInInterpolation:
   Enabled: true
