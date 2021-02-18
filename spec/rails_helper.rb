@@ -12,7 +12,7 @@ require 'rspec/rails'
 
 # Require supporting ruby files in spec/support
 # Do not end their names in _spec, or it'll bug out
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 # Check for pending migrations before tests are run
 ActiveRecord::Migration.maintain_test_schema!
