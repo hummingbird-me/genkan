@@ -17,11 +17,16 @@ jobs:
   rspec:
     name: RSpec
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
-        ruby: [2.7, '3.0']
+        ruby: [2.7]
+        experimental: [false]
+        include:
+          - ruby: '3.0'
+            experimental: true
 
     services:
       postgres:
