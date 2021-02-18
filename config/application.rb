@@ -38,7 +38,7 @@ module Genkan
     config.generators.system_tests = nil
 
     # Set up default logger
-    config.logger = Logger.new(STDERR)
+    config.logger = Logger.new($stderr)
 
     # Configure JWT
     if credentials.jwt.present?
