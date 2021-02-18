@@ -13,6 +13,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/spec/examples.txt
 
 # Coverage
 /coverage/*
