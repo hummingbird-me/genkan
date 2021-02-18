@@ -15,7 +15,7 @@ class Grant < ApplicationRecord
 
   scope :acceptable, -> { where.not('expires_at < ? AND revoked_at < ?', Time.now, Time.now) }
 
-  belongs_to :client, required: true
+  belongs_to :client, optional: false
 
   validates :client, presence: true
   validates :user_id, presence: true

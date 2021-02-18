@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class UserName < ApplicationRecord
-  enum status: %i[dead live]
-  enum kind: %i[email username]
+  enum status: { dead: 0, live: 1 }
+  enum kind: { email: 0, username: 1 }
 
   validates :user_id, presence: true
   validates :name, presence: true, uniqueness: true

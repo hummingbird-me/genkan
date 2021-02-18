@@ -3,13 +3,20 @@
 class OAuth2Error < StandardError
   # Fatal Errors (no redirect)
   class FatalError < OAuth2Error; end
+
   class InvalidClient < FatalError; end
+
   class InvalidRedirect < FatalError; end
+
   # Less-fatal errors (redirect)
   class InvalidRequest < OAuth2Error; end
+
   class UnauthorizedClient < OAuth2Error; end
+
   class AccessDenied < OAuth2Error; end
+
   class UnsupportedResponseType < OAuth2Error; end
+
   class InvalidScope < OAuth2Error
     attr_reader :scopes
 
@@ -17,9 +24,13 @@ class OAuth2Error < StandardError
       @scopes = scopes
     end
   end
+
   class ServerError < OAuth2Error; end
+
   class TemporarilyUnavailable < OAuth2Error; end
+
   class InvalidGrant < OAuth2Error; end
+
   # Resource Owner Password Grant errors
   class UserNotFound < InvalidGrant
     def error_code
@@ -30,6 +41,7 @@ class OAuth2Error < StandardError
       'oauth2.errors.user_not_found'
     end
   end
+
   class InvalidPassword < InvalidGrant
     def error_code
       'invalid_grant'

@@ -4,7 +4,7 @@ class Token < ApplicationRecord
   include WithExpiration
   include WithRevocation
 
-  belongs_to :client, required: true
+  belongs_to :client, optional: false
 
   validates :client, presence: true
   validates :user_id, presence: true

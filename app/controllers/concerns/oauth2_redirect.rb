@@ -15,7 +15,7 @@ module OAuth2Redirect
     params = { stat: params[:state] }.merge(params).compact
 
     uri = RedirectBuilder.new(redirect_uri, redirect_type).uri_for(params)
-    redirect_to(uri, status: 302)
+    redirect_to(uri, status: :found)
   end
 
   def redirect_type

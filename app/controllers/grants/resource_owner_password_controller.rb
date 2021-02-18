@@ -17,7 +17,7 @@ module Grants
     end
 
     rescue_from OAuth2Error do |exception|
-      render json: exception, status: 400
+      render json: exception, status: :bad_request
     end
 
     private
