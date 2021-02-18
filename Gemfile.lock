@@ -120,7 +120,7 @@ GEM
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
-    jwt (2.2.1)
+    jwt (2.2.2)
     librato-metrics (2.1.2)
       aggregate (~> 0.2.2)
       faraday
