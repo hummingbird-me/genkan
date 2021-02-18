@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-Types::MutationType = GraphQL::ObjectType.define do
+class Types::MutationType < Types::BaseObject
   graphql_name 'Mutation'
 end
