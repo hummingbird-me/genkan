@@ -22,8 +22,6 @@ RSpec.describe UserFinder do
   end
 
   context 'with an unknown name' do
-    let!(:name) { create(:user_name, user_id: '123', name: 'RealName') }
-
     describe '#user_id' do
       it 'should be nil' do
         finder = UserFinder.new('ThisIsAFakeName')
