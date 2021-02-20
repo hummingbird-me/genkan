@@ -163,6 +163,7 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     msgpack (1.4.2)
     multi_json (1.15.0)
@@ -170,6 +171,9 @@ GEM
     multipart-post (2.1.1)
     nenv (0.3.0)
     nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
@@ -292,7 +296,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-rails (4.2.1)
+    sentry-rails (4.2.2)
       rails (>= 5.0)
       sentry-ruby-core (~> 4.2.0)
     sentry-ruby (4.2.1)
@@ -353,6 +357,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-linux
 
